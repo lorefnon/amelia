@@ -1,12 +1,12 @@
-Amelia
-======
+# Amelia
 
 Minimal bare-bones console RSS reader powered by Node.js
 
-Installation
-------------
+## Installation
 
 [sudo] npm install -g amelia
+
+## Usage
 
  - Adding a feed:
 
