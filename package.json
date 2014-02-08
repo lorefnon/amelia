@@ -4,7 +4,7 @@
     "amelia": "./bin/amelia.js"
   },
   "description": "Node.js command line RSS reader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Lorefnon",
   "homepage": "https://github.com/lorefnon/amelia",
   "bugs": "https://github.com/lorefnon/amelia/issues",

@@ -9,16 +9,32 @@ Installation
 [sudo] npm install -g amelia
 
  - Adding a feed:
-   amelia --add techcrunch http://techcrunch.com/rssfeeds
+
+   `amelia add techcrunch http://techcrunch.com/rssfeeds`
+
+   Aliases:
+	`new`
 
  - List all feeds:
-   amelia --list
+
+   `amelia list`
+
+   Aliases:
+	`all`
 
  - Read a feed:
-   amelia --read techcrunch
+
+   `amelia read techcrunch`
+
+   Aliases:
+	`r`, `get`, `fetch`
 
  - Removing a feed:
-   amelia --purge techcrunch
+
+   `amelia purge techcrunch`
+
+   Aliases:
+	`del`, `remove`, `rm`
 
 Acknowledgements:
 -----------------
