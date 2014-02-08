@@ -7,6 +7,7 @@
 var argv = require('optimist').argv;
 var path = require('path');
 var Reader = require(path.join(__dirname, '../lib/reader' ));
+var consoleReporter = require(path.join(__dirname, '../lib/console_reporter' ));
 
 var Db = require('mongodb').Db,
 Server = require('mongodb').Server;
@@ -48,7 +49,11 @@ var controller = {
         var reader = new Reader(db);
         for (action in this.actions) {
             if (argv[action]) {
-                this.actions[action](reader, cb)
+                this.actions[action](reader, function(){
+                    var args = Array.prototype.slice.call(arguments);
+                    args.push(cb);
+                    consoleReporter[action].apply(this, args);
+                })
                 return;
             }
         }
