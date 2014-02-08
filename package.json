@@ -1,21 +1,20 @@
 {
-  "name": "node-reader",
+  "name": "Amelia",
   "bin": {
-    "node-reader": "./bin/node-reader.js"
+    "amelia": "./bin/amelia.js"
   },
   "description": "Node.js command line RSS reader",
-  "version": "0.0.4",
-  "author": "Oleksii Kulikov",
-  "homepage": "https://github.com/yeexel/node-reader",
-  "bugs": "https://github.com/yeexel/node-reader/issues",
+  "version": "0.0.1",
+  "author": "Lorefnon",
+  "homepage": "https://github.com/lorefnon/Amelia",
+  "bugs": "https://github.com/lorefnon/Amelia/issues",
   "keywords": [
-    "parser",
     "terminal",
     "rss"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeexel/node-reader.git"
+    "url": "https://github.com/lorefnon/Amelia.git"
   },
   "dependencies": {
     "optimist": ">=0.6.0",
@@ -26,5 +25,5 @@
     "mpromise": "~0.5.1",
     "monk": "git://github.com/LearnBoost/monk.git"
   },
-  "main": "node-reader"
+  "main": "amelia"
 }

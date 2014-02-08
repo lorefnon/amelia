@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-/*
-*** node-reader --- command-line RSS reader
-*** Developer: Oleksii Kulikov
-*** Email: yeexel@gmail.com
-*/
+
 var argv = require('optimist').argv;
 var path = require('path');
 var Reader = require(path.join(__dirname, '../lib/reader' ));
@@ -34,13 +30,12 @@ var controller = {
             return reader.read(name);
         },
         help: function(){
-            console.log('node-reader (nr) / ver. 0.0.4');
-            console.log('Usage:');
-            console.log('$ nr --read "<alias>" // read RSS feed');
-            console.log('$ nr --add "<alias>" "<url>" // add RSS feed');
-            console.log('$ nr --purge "<alias>" // remove RSS feed');
-            console.log('$ nr --list // list current feeds');
-            console.log('$ nr --help // Nothing to explain :)');
+            console.log('Amelia - ver. 0.0.1');
+            console.log('\nUsage:\n');
+            console.log('$ amelia --read "<alias>"         read RSS feed');
+            console.log('$ amelia --add "<alias>" "<url>"  add RSS feed');
+            console.log('$ amelia --purge "<alias>"        remove RSS feed');
+            console.log('$ amelia --list                   list current feeds');
             process.exit();
         }
     },
