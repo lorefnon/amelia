@@ -9,64 +9,61 @@ var path = require('path');
 var Reader = require(path.join(__dirname, '../lib/reader' ));
 var consoleReporter = require(path.join(__dirname, '../lib/console_reporter' ));
 
-var Db = require('mongodb').Db,
-Server = require('mongodb').Server;
-
-var mongoConfig = {
-    database: 'ReaderDB',
-    host: 'localhost',
-    port: 27017
-};
-
-var db = new Db(mongoConfig.database, new Server(
-    mongoConfig.host,
-    mongoConfig.port
-), { w: 1});
+mongoConfig = {
+    database: 'localhost/ReaderDB'
+}
 
 var controller = {
 
     actions: {
-        add: function(reader, cb){
+        add: function(reader){
             var name = process.argv[3];
             var url = process.argv[4];
 
-            reader.add(name, url, cb);
+            return reader.add(name, url);
         },
-        purge: function(reader, cb){
+        purge: function(reader){
             var name = process.argv[3];
-            reader.purge(name, cb);
+            return reader.purge(name);
         },
-        list: function(reader, cb){
-            reader.list(cb);
+        list: function(reader){
+            return reader.list();
         },
-        read: function(reader, cb){
+        read: function(reader){
             var name = process.argv[3];
-            reader.read(name, cb);
+            return reader.read(name);
+        },
+        help: function(){
+            console.log('node-reader (nr) / ver. 0.0.4');
+            console.log('Usage:');
+            console.log('$ nr --read "<alias>" // read RSS feed');
+            console.log('$ nr --add "<alias>" "<url>" // add RSS feed');
+            console.log('$ nr --purge "<alias>" // remove RSS feed');
+            console.log('$ nr --list // list current feeds');
+            console.log('$ nr --help // Nothing to explain :)');
+            process.exit();
         }
     },
 
-    run: function(db, cb){
+    run: function(db){
         var reader = new Reader(db);
         for (action in this.actions) {
             if (argv[action]) {
-                this.actions[action](reader, function(){
-                    var args = Array.prototype.slice.call(arguments);
-                    args.push(cb);
-                    consoleReporter[action].apply(this, args);
-                })
+
+                this.actions[action](reader)
+                    .then(function(res){
+                        consoleReporter[action].success(res);
+                        process.exit();
+                    }, function(err){
+                        consoleReporter[action].error(err);
+                        process.exit();
+                    })
+                    .end();
                 return;
             }
         }
-        reader.help();
+        this.actions.help();
     }
 }
 
-db.open(function(err, db){
-    if (! err) {
-        controller.run(db, function(){
-            db.close();
-        });
-    } else {
-        console.dir(err);
-    }
-});
+controller.run(require('monk')(mongoConfig.database));
