@@ -36,7 +36,10 @@ Minimal bare-bones console RSS reader powered by Node.js
    Aliases:
 	`del`, `remove`, `rm`
 
-Acknowledgements:
------------------
+## Prerequisites:
+
+You should have a mongodb instance running on default port.
+
+## Acknowledgements:
 
  - Amelia borrows code and concept from https://github.com/yeexel/node-reader
