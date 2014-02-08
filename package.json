@@ -1,20 +1,20 @@
 {
-  "name": "Amelia",
+  "name": "amelia",
   "bin": {
     "amelia": "./bin/amelia.js"
   },
   "description": "Node.js command line RSS reader",
   "version": "0.0.1",
   "author": "Lorefnon",
-  "homepage": "https://github.com/lorefnon/Amelia",
-  "bugs": "https://github.com/lorefnon/Amelia/issues",
+  "homepage": "https://github.com/lorefnon/amelia",
+  "bugs": "https://github.com/lorefnon/amelia/issues",
   "keywords": [
     "terminal",
     "rss"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lorefnon/Amelia.git"
+    "url": "https://github.com/lorefnon/amelia.git"
   },
   "dependencies": {
     "optimist": ">=0.6.0",
